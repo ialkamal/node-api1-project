@@ -13,7 +13,7 @@ module.exports = {
 
   findById(id) {
     // SELECT * FROM users WHERE id = 1;
-    const user = users.find((d) => d.id === id);
+    const user = users.find((u) => u.id === id);
     return Promise.resolve(user);
   },
 
@@ -30,7 +30,7 @@ module.exports = {
     if (!user) return Promise.resolve(null);
 
     const updatedUser = { ...changes, id };
-    users = users.map((u) => (u.id === id ? updatedUser : d));
+    users = users.map((u) => (u.id === id ? updatedUser : u));
     return Promise.resolve(updatedUser);
   },
 
@@ -39,7 +39,7 @@ module.exports = {
     const user = users.find((user) => user.id === id);
     if (!user) return Promise.resolve(null);
 
-    users = user.filter((u) => u.id !== id);
+    users = users.filter((u) => u.id !== id);
     return Promise.resolve(user);
   },
 };
